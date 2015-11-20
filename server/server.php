@@ -1,25 +1,23 @@
-date_default_timezone_set("America/New_York");
-header("Content-Type: text/event-stream\n\n");
+<?php
 
-$counter = rand(1, 10);
-while (1) {
-  // Every second, sent a "ping" event.
+    define("SECONDS_BETWEEN_ALERTS", 10);
 
-  echo "event: ping\n";
-  $curDate = date(DATE_ISO8601);
-  echo 'data: {"time": "' . $curDate . '"}';
-  echo "\n\n";
+    date_default_timezone_set("Europe/Madrid");
+    header("Content-Type: text/event-stream\n\n");
 
-  // Send a simple message at random intervals.
+    while (true) {
+        sendAlert("Test alert");
 
-  $counter--;
+        ob_end_flush();
+        flush();
+        sleep(SECONDS_BETWEEN_ALERTS);
+    }
 
-  if (!$counter) {
-    echo 'data: This is a message at time ' . $curDate . "\n\n";
-    $counter = rand(1, 10);
-  }
+    function sendAlert($message) {
+        $date = date_create();
+        $timestamp = date_timestamp_get($date);
 
-  ob_end_flush();
-  flush();
-  sleep(1);
-}
+        echo "data: { message: $message, timestamp: $timestamp }\n\n";
+    }
+
+?>
