@@ -32,9 +32,7 @@ function createEventSource(conf) {
 }
 
 function notifyAlert(e, source) {
-  console.log(e.data);
   var alert = JSON.parse(e.data);
-  console.log(alert);
   var date = new Date(alert.timestamp);
   var alert = '<li class="alert">' + source + ': ' + alert.message +
       ' on ' + date.toString() + '</li>';
