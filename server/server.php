@@ -32,7 +32,7 @@
         $timestamp = date_timestamp_get($date);
 
         echo "data: { \"source\": \"SOURCE_NAME\", \"message\": \"$message\", " .
-                "\"alertLevel\": "\"$alert_level\", \"timestamp\": $timestamp }\n\n";
+                "\"alertLevel\": \"$alert_level\", \"timestamp\": $timestamp }\n\n";
     }
 
 ?>
