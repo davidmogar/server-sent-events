@@ -1,6 +1,6 @@
 <?php
 
-    define("SECONDS_BETWEEN_ALERTS", rand(5, 15));
+    define("SECONDS_BETWEEN_ALERTS", rand(10, 60));
 
     $alerts = array(
         "Coldest Air of the Season Sweeping Through Central and Southern States",
