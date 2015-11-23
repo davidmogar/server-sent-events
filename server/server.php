@@ -15,11 +15,12 @@
     header("Content-Type: text/event-stream\n\n");
 
     while (true) {
+        sleep(SECONDS_BETWEEN_ALERTS);
+        
         sendAlert($alerts[rand(0, 5)]);
 
         ob_end_flush();
         flush();
-        sleep(SECONDS_BETWEEN_ALERTS);
     }
 
     function sendAlert($message) {
