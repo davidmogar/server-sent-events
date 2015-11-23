@@ -19,11 +19,13 @@ ul {
 #sidebar {
   background-color: #34495e;
   border-left: 3em solid #2d3e50;
+  bottom: 0;
   box-sizing: border-box;
   color: white;
-  float: left;
-  height: 100%;
+  left: 0;
+  position: fixed;
   text-align: left;
+  top: 0;
   width: 300px;
 }
 
@@ -38,6 +40,7 @@ ul {
 }
 
 #sidebar li {
+  border-bottom: 1px solid #2d3e50;
   position: relative;
 }
 
@@ -73,45 +76,62 @@ ul {
 }
 
 section {
-  margin: 0 auto;
-  max-width: 800px;
+  margin: 0 2em;
   text-align: left;
 }
 
 .alert {
   background-color: white;
-  border: 1px solid #f5f5f5;
-  border-radius: 5px;
+  border-bottom: 2px solid #2d3e50;
   margin: 1em 0;
-  padding: 1em;
   transition: all 0.3s ease-out;
+  animation: new-item-animation .3s linear forwards;
 }
 
 .alert:not(:nth-child(-n+3)) {
-  margin: 1em 5em;
+  animation: none;
+  margin: 1em 0 1em 5em;
   opacity: 0.6;
 }
 
-.alert.high {
-  border-top: 4px solid #f44336;
+.alert.high span.source {
+  border-bottom: 4px solid #ef5350;
 }
 
-.alert.low {
-  border-top: 4px solid #4caf50;
+.alert.low span.source {
+  border-bottom: 4px solid #1bbC9b;
 }
 
-.alert.medium {
-  border-top: 4px solid #ff9800;
+.alert.medium span.source {
+  border-bottom: 4px solid #ffca28;
 }
 
 .alert p {
   margin: 0;
+  padding: 1em;
+}
+
+.alert span {
+  display: block;
 }
 
 .alert span.date {
   color: #b0bec5;
+  padding: 1em 1em 0;
 }
 
 .alert span.source {
   font-weight: 700;
+  padding: 1em;
+}
+
+@keyframes new-item-animation {
+  from {
+    opacity: 0;
+    transform: translateY(-400px);
+  }
+  to {
+    opacity: 1;
+    transform : translateY(0);
+  }
 }
