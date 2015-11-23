@@ -34,7 +34,8 @@ function createEventSource(conf) {
 function notifyAlert(e, source) {
   var alert = JSON.parse(e.data);
   var date = new Date(alert.timestamp);
-  var alert = '<li class="alert ' + e.alertLevel + '">' + source + ': ' + alert.message +
-      ' on ' + date.toString() + '</li>';
-  $('section#alerts ul').append(alert);
+  var alert = '<li class="alert ' + alert.alertLevel + '"><p><span class="source">' +
+      source + ':</span> ' + alert.message + '</p><span class="date">' +
+      date.toString() + '</span></li>';
+  $('section#alerts ul').prepend(alert);
 }
