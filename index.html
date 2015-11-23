@@ -8,19 +8,29 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
     <title>Server-sent events</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <h1>Server-sent events alerts system</h1>
+    <div id="sidebar">
+      <nav>
+        <h1>Alerts system</h1>
+        <ul>
+          <li class="selected"><a href="http://156.35.95.69/server-sent-events/server/server.php">David Moreno García</a></li>
+          <li><a href="http://156.35.95.75/server/events.php">Marco Vidal García</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div id="content">
+      <section id="alerts">
+        <ul></ul>
+      </section>
 
-    <section id="alerts">
-      <ul></ul>
-    </section>
+      <section id="sources">
 
-    <section id="sources">
-
-    </section>
+      </section>
+    </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/subscriber.js"></script>
