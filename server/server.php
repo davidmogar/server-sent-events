@@ -11,23 +11,28 @@
         "Experts criticise WHO delay in sounding alarm over Ebola outbreak"
     );
 
+    $alerts_levels = array("low", "medium", "high");
+
     date_default_timezone_set("Europe/Madrid");
     header("Content-Type: text/event-stream\n\n");
 
     while (true) {
         sleep(SECONDS_BETWEEN_ALERTS);
-        
-        sendAlert($alerts[rand(0, 5)]);
+
+        sendAlert($alerts[rand(0, sizeof($alerts))],
+                $alerts_levels[rand(0, sizeof($alerts_levels))]);
 
         ob_end_flush();
         flush();
     }
 
-    function sendAlert($message) {
+    function sendAlert($message, $alert_level) {
         $date = date_create();
         $timestamp = date_timestamp_get($date);
 
-        echo "data: { \"message\": \"$message\", \"timestamp\": $timestamp }\n\n";
+        echo 'data: { "message": "' + $message + '",
+                "alertLevel": "' + $alert_level + '",
+                "timestamp": ' + $timestamp + ' }\n\n";
     }
 
 ?>
