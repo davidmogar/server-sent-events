@@ -1,6 +1,7 @@
 <?php
 
     define("SECONDS_BETWEEN_ALERTS", rand(10, 60));
+    define("SOURCE_NAME", "David's Alerts");
 
     $alerts = array(
         "Coldest Air of the Season Sweeping Through Central and Southern States",
@@ -30,7 +31,8 @@
         $date = date_create();
         $timestamp = date_timestamp_get($date);
 
-        echo "data: { \"message\": \"$message\", \"alertLevel\": \"$alert_level\", \"timestamp\": $timestamp }\n\n";
+        echo "data: { \"source\": \"SOURCE_NAME\", \"message\": \"$message\", " .
+                "\"alertLevel\": "\"$alert_level\", \"timestamp\": $timestamp }\n\n";
     }
 
 ?>
