@@ -15,7 +15,7 @@
     header("Content-Type: text/event-stream\n\n");
 
     while (true) {
-        sendAlert(rand(0, 5));
+        sendAlert($array(rand(0, 5)));
 
         ob_end_flush();
         flush();
