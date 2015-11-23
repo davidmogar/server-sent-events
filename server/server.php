@@ -30,9 +30,9 @@
         $date = date_create();
         $timestamp = date_timestamp_get($date);
 
-        echo 'data: { "message": "' + $message + '",
-                "alertLevel": "' + $alert_level + '",
-                "timestamp": ' + $timestamp + ' }\n\n";
+        echo "data: { \"message\": \"$message\",
+                \"alertLevel\": \"$alertLevel\",
+                \"timestamp\": $timestamp }\n\n";
     }
 
 ?>
