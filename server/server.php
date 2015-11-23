@@ -19,8 +19,8 @@
     while (true) {
         sleep(SECONDS_BETWEEN_ALERTS);
 
-        sendAlert($alerts[rand(0, sizeof($alerts))],
-                $alerts_levels[rand(0, sizeof($alerts_levels))]);
+        sendAlert($alerts[rand(0, sizeof($alerts) - 1)],
+                $alerts_levels[rand(0, sizeof($alerts_levels) - 1)]);
 
         ob_end_flush();
         flush();
@@ -30,9 +30,7 @@
         $date = date_create();
         $timestamp = date_timestamp_get($date);
 
-        echo "data: { \"message\": \"$message\",
-                \"alertLevel\": \"$alertLevel\",
-                \"timestamp\": $timestamp }\n\n";
+        echo "data: { \"message\": \"$message\", \"alertLevel\": \"$alert_level\", \"timestamp\": $timestamp }\n\n";
     }
 
 ?>
