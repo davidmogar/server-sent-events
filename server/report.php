@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-    if (isset($_POST['message'] && isset($_POST['message']) {
+    if (isset($_POST['message']) && isset($_POST['message'])) {
         $date = date_create();
         $timestamp = date_timestamp_get($date);
         $file = fopen("alerts.txt", "w");
