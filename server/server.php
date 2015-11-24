@@ -23,7 +23,7 @@
     while (true) {
         sleep(SECONDS_BETWEEN_ALERTS);
 
-        checkFileAlerts(ALERTS_FILE_PATH);
+        $file_alerts_sent = checkFileAlerts(ALERTS_FILE_PATH, $file_alerts_sent);
 
         sendAlert($alerts[rand(0, sizeof($alerts) - 1)],
                 $alerts_levels[rand(0, sizeof($alerts_levels) - 1)]);
@@ -32,24 +32,25 @@
         flush();
     }
 
-    function checkFileAlerts($path) {
+    function checkFileAlerts($path, $lines_to_skip) {
         $handle = @fopen($path, "r");
         if ($handle) {
             $lines_skipped = 0;
             while (($line = fgets($handle)) !== false) {
-                if ($lines_skipped >= $file_alerts_sent) {
+                if ($lines_skipped >= $lines_to_skip) {
                     $line = str_replace("\n", "", $line);
                     $fields = explode("\t", $line);
                     if (sizeof($fields) == 3) {
                         sendAlert($fields[2], $fields[1], floatval($fields[0]));
                         $file_alerts_sent++;
                     }
-                } else {
-                  $lines_skipped++;
                 }
+
+                $lines_skipped++;
             }
             fclose($handle);
         }
+        return $lines_skipped;
     }
 
     function sendAlert($message, $alert_level, $timestamp = null) {
