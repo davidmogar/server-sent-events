@@ -58,7 +58,7 @@ function isPageHidden() {
 
 function notifyAlert(e) {
   var alert = JSON.parse(e.data);
-  var date = new Date(alert.timestamp);
+  var date = new Date(parseFloat(alert.timestamp));
   var li = '<li class="alert ' + alert.alertLevel + '"><span class="source">' +
       alert.source + '</span><span class="date">' +
       date.toString() + '</span><p>' + alert.message + '</p></li>';
