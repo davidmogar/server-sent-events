@@ -5,7 +5,7 @@
         $date = date_create();
         $timestamp = date_timestamp_get($date);
         $file = fopen("alerts.txt", "w");
-        fwrite($file, $_POST['alertLevel'] . "#" . $_POST['message']);
+        fwrite($file, $_POST['alertLevel'] . "#" . $_POST['message'] . "\n");
         fclose($file);
     }
 ?>
