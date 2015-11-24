@@ -4,7 +4,7 @@
     if (isset($_POST['message']) && isset($_POST['message'])) {
         $date = date_create();
         $timestamp = date_timestamp_get($date);
-        $file = fopen("alerts.txt", "w");
+        $file = fopen("./alerts.txt", "a+");
         fwrite($file, $_POST['alertLevel'] . "#" . $_POST['message'] . "\n");
         fclose($file);
     }
