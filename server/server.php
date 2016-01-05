@@ -42,6 +42,7 @@
                     $fields = explode("\t", $line);
                     if (sizeof($fields) == 3) {
                         sendAlert($fields[2], $fields[1], floatval($fields[0]));
+                        $file_alerts_sent++;
                     }
                 }
 
